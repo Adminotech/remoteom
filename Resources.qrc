@@ -1,0 +1,14 @@
+<RCC>
+    <qresource>
+        <file>images/icon.ico</file>
+        <file>images/remoteom.ico</file>
+        <file>images/remoteom.jpg</file>
+        <file>images/bg.png</file>
+        <file>images/bg_button.png</file>
+        <file>images/consolebg.png</file>
+        <file>images/light_green.png</file>
+        <file>images/light_red.png</file>
+        <file>images/light_yellow.png</file>
+        <file>images/remoteom.png</file>
+    </qresource>
+</RCC>

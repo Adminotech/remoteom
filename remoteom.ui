@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RemoteOM</class>
+ <widget class="QMainWindow" name="RemoteOM">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>817</width>
+    <height>285</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>817</width>
+    <height>285</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>817</width>
+    <height>285</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>0</width>
+    <height>10</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Remote Innovations by Radio Arcala - 1.1 (11.2.2013)</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/icon.ico</normaloff>images/icon.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#RemoteOM {
+background-image: url(:/images/remoteom.png);
+background-repeat: no-repeat;
+}
+#statusBar {
+background-color: #000000;
+color: #ffffff;
+}
+#menuBar {
+background-color: #000000;
+color: #ffffff;
+border-bottom: 1px solid #ffffff;
+}
+#menuBar::item {
+background-color: #000000;
+color: #ffffff;
+}
+#menuBar::item::selected {
+background-color: #ffffff;
+color: #000000;
+}
+
+QMenu {
+	background-color: #000000;
+	color: #ffffff;
+}
+#menu {
+	border: 1px solid #000000;
+	border-bottom: 1px solid #ffffff;
+}
+#menu::item {
+	color: #ffffff;
+}
+#menu::item::selected {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+#settingsWidget {
+	border: 1px solid #000000;
+	background-color: #333333;
+}
+
+QLabel {
+	color: #ffffff;
+}
+#headerLabel {
+	font-size: 12px;
+}
+#errorLabel {
+	color: #FF0000;
+}
+
+
+QLineEdit {
+	border-width: 1px;
+	border-color: #999;
+	border-style: solid;
+	border-radius: 5;
+}
+
+QMessageBox {
+	background-color: #000000;
+}
+
+QPushButton
+{
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #000000, stop: 1 #999);
+	width: 80px;
+	height: 20px;
+	color: #fff;
+}
+
+QPushButton:pressed
+{
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #999, stop: 1 #000);
+}
+
+#buttonReset {
+	background-color: transparent;
+	background-image: url(:/images/bg_button.png);
+	border-width: 0px;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 67px;
+	height:39px;
+
+}
+
+
+#buttonReset:pressed {
+	background-color: transparent;
+	border-width: 0px;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 6px;
+	padding-right: 4px;
+}
+
+#buttonConnect {
+	background-color: transparent;
+	background-image: url(:/images/bg_button.png);
+	border-width: 0px;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 67px;
+	height:39px;
+
+}
+
+
+#buttonConnect:pressed {
+	background-color: transparent;
+	border-width: 0px;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 6px;
+	padding-right: 4px;
+}
+
+#buttonFaults {
+	background-color: transparent;
+	background-image: url(:/images/bg_button.png);
+	border-width: 0px;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 67px;
+	height:39px;
+}
+
+
+#buttonFaults:pressed {
+	background-color: transparent;
+	border-width: 0px;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 6px;
+	padding-right: 4px;
+}
+</string>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>30</y>
+      <width>425</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>128</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledPower">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledPower {
+	background-image: url(:/images/light_green.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonPower">
+    <property name="geometry">
+     <rect>
+      <x>52</x>
+      <y>110</y>
+      <width>88</width>
+      <height>87</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#buttonPower {
+	background-color: transparent;
+	border-width: 1px;
+	border-color: #000;
+	border-style: solid;
+	border-radius: 2;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 88px;
+	height: 87px;
+}
+
+
+#buttonPower:pressed {
+	background-color: transparent;
+	border-width: 3px;
+	border-color: #000;
+	border-style: solid;
+	border-radius: 3;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonOperate">
+    <property name="geometry">
+     <rect>
+      <x>208</x>
+      <y>110</y>
+      <width>88</width>
+      <height>87</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#buttonOperate {
+	background-color: transparent;
+	border-width: 1px;
+	border-color: #000;
+	border-style: solid;
+	border-radius: 2;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 88px;
+	height: 87px;
+}
+
+
+#buttonOperate:pressed {
+	background-color: transparent;
+	border-width: 3px;
+	border-color: #000;
+	border-style: solid;
+	border-radius: 3;
+	padding: 0px;
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledFault">
+    <property name="geometry">
+     <rect>
+      <x>155</x>
+      <y>17</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledFault {
+	background-image: url(:/images/light_red.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledTune">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>17</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledTune {
+	background-image: url(:/images/light_yellow.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledSwr">
+    <property name="geometry">
+     <rect>
+      <x>293</x>
+      <y>17</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledSwr {
+	background-image: url(:/images/light_yellow.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledStdby">
+    <property name="geometry">
+     <rect>
+      <x>155</x>
+      <y>67</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledStdby {
+	background-image: url(:/images/light_yellow.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledDrive">
+    <property name="geometry">
+     <rect>
+      <x>293</x>
+      <y>67</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledDrive {
+	background-image: url(:/images/light_yellow.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledGrid">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>67</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledGrid {
+	background-image: url(:/images/light_yellow.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledPA">
+    <property name="geometry">
+     <rect>
+      <x>55</x>
+      <y>115</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledPA {
+	background-image: url(:/images/light_green.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="ledOperate">
+    <property name="geometry">
+     <rect>
+      <x>208</x>
+      <y>115</y>
+      <width>27</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ledOperate {
+	background-image: url(:/images/light_green.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="txtInfo">
+    <property name="geometry">
+     <rect>
+      <x>418</x>
+      <y>90</y>
+      <width>361</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#txtInfo 
+{
+	padding: 10px;
+	color: #ffffff;
+	vertical-align: top;
+	background-image: url(:/images/consolebg.png);
+	background-repeat: no-repeat;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonFaults">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>160</y>
+      <width>67</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Faults</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonReset">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>110</y>
+      <width>67</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>Reset PA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonConnect">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>67</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connect</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="txtCurrentSettings">
+    <property name="geometry">
+     <rect>
+      <x>425</x>
+      <y>180</y>
+      <width>346</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#txtCurrentSettings
+{
+	padding: 2px;
+	color: #ffffff;
+	vertical-align: top;
+	background-image: url(:/images/currentsettings.png);
+	background-repeat: no-repeat;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>817</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+  </widget>
+  <action name="actionConfiguration">
+   <property name="text">
+    <string>Configuration</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>configClose()</slot>
+ </slots>
+</ui>
