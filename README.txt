@@ -1,12 +1,21 @@
 RemoteOM
 ===================
 
+Change log 11.2.2013:
+- Current version 1.1
+- Qt version updated
+- Fixed problems with settings
+
+Download installer:
+- http://download.meshmoon.com/remoteom/RemoteOM-1.1.exe
+
+
 windows usage
 -----
--Using Qt (4.7.4)
--Download and install Qt http://qt-project.org/downloads
--Run Qt Creator
--Open .pro file in QtCreator
+- Using Qt (4.7.4)
+- Download and install Qt http://qt-project.org/downloads
+- Run Qt Creator
+- Open .pro file in QtCreator
 
 Running RemoteOM.exe from rel/debug folders
 -----
@@ -16,4 +25,4 @@ Running RemoteOM.exe from rel/debug folders
 
 License
 -------
-See License.txt file for license information.
+- See License.txt file for license information.
