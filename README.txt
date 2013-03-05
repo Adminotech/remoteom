@@ -7,7 +7,7 @@ Change log 11.2.2013:
 - Fixed problems with settings
 
 Download installer:
-- http://download.meshmoon.com/remoteom/RemoteOM 2.0.exe
+- http://download.meshmoon.com/remoteom/RemoteOM-2.0.exe
 
 
 windows usage
